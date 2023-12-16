@@ -1,0 +1,10 @@
+{
+    "grossIncome": 55000,
+    "raceDistribution": {
+        "Caucasian": 50,
+        "Hispanic": 20,
+        "African American": 15,
+        "Asian": 10,
+        "Other": 5
+    }
+}

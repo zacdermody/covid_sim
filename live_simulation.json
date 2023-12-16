@@ -1,0 +1,19 @@
+{
+    "policyNumber": 5,
+    "currentNews": "News headline here",
+    "topTweets": [
+        "Tweet 1",
+        "Tweet 2",
+        "Tweet 3"
+    ],
+    "currentProgress": {
+        "percentage": 40,
+        "daysSimulated": 14,
+        "daysLeft": 21
+    },
+    "vaccineHesitancy": 30,
+    "reasonsForDisagreement": [
+        "Reason 1",
+        "Reason 2"
+    ]
+}
