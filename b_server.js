@@ -3,6 +3,7 @@ const fs = require('fs');
 const cors = require('cors');
 const app = express();
 const path = require('path');
+const fetch = require('node-fetch');
 
 // Enable CORS for all routes
 app.use(cors());
@@ -28,8 +29,18 @@ app.post('/api/start-simulation', (req, res) => {
 
 
 // Simulation Status endpoint
-app.get('/api/simulation-status', (req, res) => {
-    res.json(readJsonData('./simulation_status.json'));
+app.get('/api/simulation-status', async (req, res) => {
+    try {
+        const flaskResponse = await fetch('https://llm-test-covid-1266a49722c1.herokuapp.com/generate-json');
+        if (!flaskResponse.ok) {
+            throw new Error(`HTTP error! Status: ${flaskResponse.status}`);
+        }
+        const flaskData = await flaskResponse.json();
+        res.json(flaskData);  // Send the data from Flask directly to the client
+    } catch (error) {
+        console.error('Error fetching data from Flask app:', error);
+        res.status(500).send('Error fetching simulation status');
+    }
 });
 
 // Live Simulation endpoint
